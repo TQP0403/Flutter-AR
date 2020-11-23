@@ -9,7 +9,7 @@ class ArCustom extends StatefulWidget {
 
 class _ArCustomState extends State<ArCustom> {
   ArCoreController _arCoreController;
-  String _model = 'AndroidRobot';
+  String _model = 'Andy';
   int _count = 0;
 
   @override
