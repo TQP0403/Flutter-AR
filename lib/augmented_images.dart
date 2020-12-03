@@ -36,7 +36,8 @@ class _AugmentedPageState extends State<AugmentedPage> {
   void _onArCoreViewCreated(ArCoreController controller) async {
     arCoreController = controller;
     arCoreController.onTrackingImage = _handleOnTrackingImage;
-    loadSingleImage(imageName: 'earth_augmented_image.jpg');
+    // loadSingleImage(imageName: 'earth_augmented_image.jpg');
+    loadSingleImage(imageName: 'dino.jpg');
 
     // OR
     // loadSingleImage();
@@ -65,16 +66,25 @@ class _AugmentedPageState extends State<AugmentedPage> {
   void _handleOnTrackingImage(ArCoreAugmentedImage augmentedImage) {
     if (!augmentedImagesMap.containsKey(augmentedImage.index)) {
       augmentedImagesMap[augmentedImage.index] = augmentedImage;
-      _addSphere(augmentedImage);
-      // _addModel(augmentedImage);
+      // _addSphere(augmentedImage);
+      _addModel(augmentedImage);
     }
   }
 
   void _addModel(ArCoreAugmentedImage augmentedImage) {
-    final node = ArCoreReferenceNode(
+    var rotation = augmentedImage.centerPose.rotation;
+    var translation = augmentedImage.centerPose.translation;
+
+    print('rotation: $rotation');
+    print('translation: $translation');
+
+    var node = ArCoreReferenceNode(
       name: _model,
       object3DFileName: _model + '.sfb',
+      // position: translation,
+      // rotation: rotation,
     );
+
     arCoreController.addArCoreNodeToAugmentedImage(node, augmentedImage.index);
   }
 
