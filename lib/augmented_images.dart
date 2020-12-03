@@ -20,14 +20,29 @@ class _AugmentedPageState extends State<AugmentedPage> {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Single Augmented Image'),
         ),
-        body: ArCoreView(
-          onArCoreViewCreated: _onArCoreViewCreated,
-          type: ArCoreViewType.AUGMENTEDIMAGES,
+        body: Stack(
+          children: [
+            ArCoreView(
+              onArCoreViewCreated: _onArCoreViewCreated,
+              type: ArCoreViewType.AUGMENTEDIMAGES,
+            ),
+            Container(
+              height: size.height,
+              color: Colors.transparent,
+              alignment: AlignmentDirectional(0.0, 0.0),
+              child: Image.asset(
+                'assets/images/FitToScan.png',
+                width: size.width,
+                height: size.height,
+              ),
+            ),
+          ],
         ),
       ),
     );
