@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'ar_custom.dart';
+import 'home.dart';
 import 'package:arcore_flutter_plugin/arcore_flutter_plugin.dart'
     show ArCoreController;
-
-import 'augmented_images.dart';
-import 'multiple_augmented_images.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,9 +19,6 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    return MaterialApp(
-      home: AugmentedPage(),
-    );
+    return MaterialApp(home: HomePage());
   }
 }

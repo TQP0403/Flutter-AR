@@ -16,6 +16,19 @@ class _AugmentedImagesPageState extends State<AugmentedImagesPage> {
   Map<String, Uint8List> bytesMap = Map();
 
   @override
+  void initState() {
+    arCoreController = ArCoreController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    print("dispose");
+    arCoreController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
@@ -115,11 +128,5 @@ class _AugmentedImagesPageState extends State<AugmentedImagesPage> {
       shape: cylindre,
     );
     arCoreController.addArCoreNodeToAugmentedImage(node, augmentedImage.index);
-  }
-
-  @override
-  void dispose() {
-    arCoreController.dispose();
-    super.dispose();
   }
 }
